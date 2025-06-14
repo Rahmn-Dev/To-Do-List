@@ -114,19 +114,19 @@ $filteredTasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Dashboard Stats -->
         <div class="dashboard">
-            <div class="stat-card total">
+            <div class="col-3 stat-card total">
                 <div class="stat-number"><?= $stats['total'] ?></div>
                 <div class="stat-label">Total Tasks</div>
             </div>
-            <div class="stat-card pending">
+            <div class="col-3 stat-card pending">
                 <div class="stat-number"><?= $stats['pending'] ?></div>
                 <div class="stat-label">Pending</div>
             </div>
-            <div class="stat-card progress">
+            <div class="col-3 stat-card progress">
                 <div class="stat-number"><?= $stats['in_progress'] ?></div>
                 <div class="stat-label">In Progress</div>
             </div>
-            <div class="stat-card completed">
+            <div class="col-3 stat-card completed">
                 <div class="stat-number"><?= $stats['completed'] ?></div>
                 <div class="stat-label">Completed</div>
             </div>
