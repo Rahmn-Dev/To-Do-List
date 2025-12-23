@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern To-Do List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>✨ My Tasks</h1>
+            <p>Organize your day, achieve your goals</p>
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-title">📋 To-Do List</div>
+            <ul>
+                <li><a href="index.php" class="active">Semua</a></li>
+                <li><a href="?filter=done" >Selesai</a></li>
+                <li><a href="?filter=undone" >Belum Selesai</a></li>
+            </ul>
+        </nav>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard">
+            <div class="stat-card total">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-card pending">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card progress">
+                <div class="stat-number">0</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-card completed">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Form -->
+                            <form method="POST" class="form-create">
+                    <input type="hidden" name="action" value="create">
+                    <input type="text" name="task" placeholder="What needs to be done? ✍️" required>
+                    <button type="submit">➕ Tambah Task</button>
+                </form>
+            
+            <!-- Daftar Tugas -->
+            <div class="task-list">
+                                    <div class="task-item ">
+                        <form method="POST" class="checkbox-form">
+                            <input type="hidden" name="action" value="toggle">
+                            <input type="hidden" name="id" value="1">
+                            <input type="hidden" name="done" value="1">
+                            <input type="checkbox" onchange="this.form.submit()" >
+                            <span>test</span>
+                        </form>
+                        <div class="actions">
+                            <a href="?edit=1">✏️ Edit</a>
+                            <a href="?delete=1" class="delete" onclick="return confirm('Are you sure you want to delete this task?')">🗑️ Delete</a>
+                        </div>
+                    </div>
+                            </div>
+
+            <!-- Empty State -->
+                    </main>
+    </div>
+
+    <script>
+        // Add smooth interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stat cards on load
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Animate task items on load
+            const taskItems = document.querySelectorAll('.task-item');
+            taskItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 300 + index * 50);
+            });
+        });
+    </script>
+</body>
+</html>
